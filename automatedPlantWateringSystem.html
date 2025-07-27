@@ -45,12 +45,12 @@
     }
     .split {
       display: flex;
+      justify-content: space-between;
       flex-wrap: wrap;
       gap: 20px;
-      justify-content: center;
     }
     .split img {
-      flex: 1 1 45%;
+      width: calc(50% - 10px);
       object-fit: cover;
     }
   </style>
@@ -77,7 +77,7 @@
 
     <section>
       <h2>System Hardware</h2>
-      <div class="image-row">
+      <div class="split">
         <img src="APWS-pump.jpg" alt="APWS pump">
         <img src="APWS-sensors.jpg" alt="APWS sensors">
       </div>
