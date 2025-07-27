@@ -22,7 +22,7 @@
       max-width: 900px;
       margin: auto;
     }
-    img {
+    img, video {
       max-width: 100%;
       border-radius: 8px;
       margin: 10px 0;
@@ -43,6 +43,14 @@
       text-decoration: none;
       color: #3498db;
     }
+    .split {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .split img {
+      flex: 1 1 48%;
+    }
   </style>
 </head>
 <body>
@@ -52,32 +60,33 @@
   </header>
   <main>
     <section>
-      <h2>Overview</h2>
-      <p>This project automatically waters a plant based on moisture levels in the soil. Designed using Arduino, it uses a moisture sensor, a relay, and a submersible pump to activate watering when dryness is detected.</p>
+      <h2>Introduction</h2>
+      <p>I am happy to present my final project for Introduction to Mechanical Engineering: Programming and Hardware Interface (MEGN200). It was a fantastic project experience, and I'm looking forward to carrying this project on—and to all projects in the future.</p>
     </section>
 
     <section>
-      <h2>Photos</h2>
-      <img src="APWS-sensors.jpg" alt="Sensor Close-Up">
-      <img src="APWS-lcd.jpg" alt="Front View of System">
-      <img src="APWS-pump.jpg" alt="Pump and Water Reservoir">
+      <h2>Demonstration</h2>
+      <p>Below is a demonstration of the functionality of the automated plant watering system:</p>
+      <video controls>
+        <source src="plant-watering-demo.mov" type="video/quicktime">
+        Your browser does not support the video tag.
+      </video>
     </section>
 
     <section>
-      <h2>Parts Used</h2>
-      <ul>
-        <li>Arduino Uno</li>
-        <li>Soil Moisture Sensor</li>
-        <li>5V Relay Module</li>
-        <li>Submersible Pump</li>
-        <li>12V Power Supply</li>
-        <li>Water reservoir + tubing</li>
-      </ul>
+      <h2>System Hardware</h2>
+      <div class="split">
+        <img src="plant-watering-3.jpg" alt="APWS-pump">
+        <img src="plant-watering-2.jpg" alt="APWS-sensors">
+      </div>
+      <p>Above on the left is the motor we used to move the water from the tank at the bottom of the pot to the plant at the top of the pot. The image on the right shows the sensors we used to dictate when the plant should be watered. The two-pronged sensor monitors the moisture of the soil, and the second sensor monitors the ambient temperature and humidity.</p>
     </section>
 
     <section>
-      <h2>How It Works</h2>
-      <p>The sensor monitors the soil’s moisture content. When the value drops below a predefined threshold, the Arduino signals the relay to activate the pump. Once moisture levels rise, the pump is turned off to conserve water and power.</p>
+      <h2>Sensor Functionality</h2>
+      <p><strong>Moisture Sensor:</strong> Uses a circuit to detect changes in capacitance caused by varying moisture levels. By probing the charge of the soil, the sensor calculates the moisture level and outputs volumetric water content, which is a ratio of water volume to total volume. Ranging from 1 (completely submerged) to 667 (completely dry).</p>
+
+      <p><strong>Temperature/Humidity Sensor:</strong> Using a capacitive humidity sensor, which absorbs water vapor and changes the dielectric constant of the sensor, the effective capacitance calculates relative humidity as a percentage. As well as a thermistor, which is a resistor that changes with temperature, it then calculates and outputs the temperature based on that resistance.</p>
     </section>
 
     <a href="index.html" class="back">← Back to Portfolio</a>
