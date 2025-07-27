@@ -79,15 +79,19 @@
       <div class="split">
         <img src="APWS-pump.jpg" alt="APWS pump">
         <img src="APWS-sensors.jpg" alt="APWS sensors">
+        <img src="APWS-lcd.jpg" alt="APWS display">
       </div>
-      <p>Above on the left is the motor we used to move the water from the tank at the bottom of the pot to the plant at the top of the pot. The image on the right shows the sensors we used to dictate when the plant should be watered. The two-pronged sensor monitors the moisture of the soil, and the second sensor monitors the ambient temperature and humidity.</p>
+      <p>Above on the left is the motor we used to move the water from the tank at the bottom of the pot to the plant at the top of the pot. The image on the right shows the sensors we used to dictate when the plant should be watered. The two-pronged sensor monitors the moisture of the soil, and the second sensor monitors the ambient temperature and humidity. We took the outputs of those sensors and sent them to a digital display.</p>
     </section>
 
     <section>
       <h2>Sensor Functionality</h2>
       <p><strong>Moisture Sensor:</strong> Uses a circuit to detect changes in capacitance caused by varying moisture levels. By probing the charge of the soil, the sensor calculates the moisture level and outputs volumetric water content, which is a ratio of water volume to total volume. Ranging from 1 (completely submerged) to 667 (completely dry).</p>
 
-      <p><strong>Temperature/Humidity Sensor:</strong> Using a capacitive humidity sensor, which absorbs water vapor and changes the dielectric constant of the sensor, the effective capacitance calculates relative humidity as a percentage. As well as a thermistor, which is a resistor that changes with temperature, it then calculates and outputs the temperature based on that resistance.</p>
+      <p><strong>Temperature/Humidity Sensor:</strong> Uses a capacitive humidity sensor, which absorbs water vapor and changes the dielectric constant of the sensor, the effective capacitance changes and recalculates relative humidity as a percentage. As well as a thermistor, which is a resistor that changes with temperature, it then calculates and outputs the temperature based on that resistance.</p>
+
+      <p><strong>Digital Display:</strong> Is a simple LCD Display, which cycles though temperature, humidity, and soil volumetric water content in 5 second intervals.</p>
+
     </section>
 
     <a href="index.html" class="back">← Back to Portfolio</a>
