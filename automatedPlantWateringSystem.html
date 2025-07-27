@@ -3,104 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hudson Hobbs - Projects</title>
+  <title>Automated Plant Watering System</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f7f7f7;
+      background-color: #f9f9f9;
     }
     header {
-      background: #2c3e50;
+      background-color: #2c3e50;
       color: white;
       padding: 20px;
       text-align: center;
     }
-    nav {
-      background: #34495e;
-      padding: 10px;
-      text-align: center;
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
     }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
+    img, video {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
     }
     section {
-      padding: 20px;
+      margin-bottom: 30px;
     }
-    .project {
-      background: white;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    h2 {
+      color: #2c3e50;
     }
-    .project h3 {
-      margin-top: 0;
+    ul {
+      list-style-type: disc;
+      margin-left: 20px;
     }
-    .project a {
+    a.back {
       display: inline-block;
-      margin-top: 10px;
-      color: #3498db;
+      margin-top: 20px;
       text-decoration: none;
+      color: #3498db;
     }
-    .project a:hover {
-      text-decoration: underline;
-    }
-    .image-row {
+    .split {
       display: flex;
-      gap: 20px;
-      justify-content: center;
       flex-wrap: wrap;
+      gap: 20px;
     }
-    .image-row img {
-      max-width: 45%;
-      border-radius: 8px;
-    }
-    footer {
-      background: #2c3e50;
-      color: white;
-      text-align: center;
-      padding: 10px;
+    .split img {
+      flex: 1 1 48%;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Hudson Hobbs</h1>
-    <p>Mechanical Engineering Student | Project Portfolio</p>
+    <h1>Automated Plant Watering System</h1>
+    <p>Reliable, Arduino-Based Smart Irrigation</p>
   </header>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I’m a Mechanical Engineering student at Colorado School of Mines with experience in SolidWorks, Arduino, and circuit design. This is a showcase of my favorite engineering projects.</p>
-  </section>
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>Automated Plant Watering System</h3>
-      <p>A soil moisture–based watering system using Arduino, a pump, and a water reservoir. Automatically hydrates plants based on real-time sensor readings. Built for reliability and low maintenance.</p>
-      <div class="image-row">
-         <img src="APWS-pump.jpg" alt="Water Pump">
-        <img src="APWS-sensors.jpg" alt="Soil and Environment Sensors">
+  <main>
+    <section>
+      <h2>Introduction</h2>
+      <p>I am happy to present my final project for Introduction to Mechanical Engineering: Programming and Hardware Interface (MEGN200). It was a fantastic project experience, and I'm looking forward to carrying this project on—and to all projects in the future.</p>
+    </section>
+
+    <section>
+      <h2>Demonstration</h2>
+      <p>Below is a demonstration of the functionality of the automated plant watering system:</p>
+      <video controls>
+        <source src="plant-watering-demo.mov" type="video/quicktime">
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <section>
+      <h2>System Hardware</h2>
+      <div class="split">
+        <img src="plant-watering-3.jpg" alt="APWS-pump">
+        <img src="plant-watering-2.jpg" alt="APWS-sensors">
       </div>
-      <a href="automated-plant-watering.html">View Project Page →</a>
-    </div>
-  </section>
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:hudsonhobbs4@gmail.com">hudsonhobbs4@gmail.com</a></p>
-    <p><a href="https://www.linkedin.com/in/hudson-hobbs" target="_blank">LinkedIn</a></p>
-  </section>
-  <footer>
-    <p>&copy; 2025 Hudson Hobbs</p>
-  </footer>
+      <p>Above on the left is the motor we used to move the water from the tank at the bottom of the pot to the plant at the top of the pot. The image on the right shows the sensors we used to dictate when the plant should be watered. The two-pronged sensor monitors the moisture of the soil, and the second sensor monitors the ambient temperature and humidity.</p>
+    </section>
+
+    <section>
+      <h2>Sensor Functionality</h2>
+      <p><strong>Moisture Sensor:</strong> Uses a circuit to detect changes in capacitance caused by varying moisture levels. By probing the charge of the soil, the sensor calculates the moisture level and outputs volumetric water content, which is a ratio of water volume to total volume. Ranging from 1 (completely submerged) to 667 (completely dry).</p>
+
+      <p><strong>Temperature/Humidity Sensor:</strong> Using a capacitive humidity sensor, which absorbs water vapor and changes the dielectric constant of the sensor, the effective capacitance calculates relative humidity as a percentage. As well as a thermistor, which is a resistor that changes with temperature, it then calculates and outputs the temperature based on that resistance.</p>
+    </section>
+
+    <a href="index.html" class="back">← Back to Portfolio</a>
+  </main>
 </body>
 </html>
