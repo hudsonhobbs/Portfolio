@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automated Plant Watering System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+    a.back {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #3498db;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Automated Plant Watering System</h1>
+    <p>Reliable, Arduino-Based Smart Irrigation</p>
+  </header>
+  <main>
+    <section>
+      <h2>Overview</h2>
+      <p>This project automatically waters a plant based on moisture levels in the soil. Designed using Arduino, it uses a moisture sensor, a relay, and a submersible pump to activate watering when dryness is detected.</p>
+    </section>
+
+    <section>
+      <h2>Photos</h2>
+      <img src="IMG_1257 2.HEIC" alt="Front View of System">
+      <img src="IMG_1258 2.heic" alt="Sensor Close-Up">
+      <img src="IMG_1259 2.HEIC" alt="Pump and Water Reservoir">
+    </section>
+
+    <section>
+      <h2>Parts Used</h2>
+      <ul>
+        <li>Arduino Uno</li>
+        <li>Soil Moisture Sensor</li>
+        <li>5V Relay Module</li>
+        <li>Submersible Pump</li>
+        <li>12V Power Supply</li>
+        <li>Water reservoir + tubing</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How It Works</h2>
+      <p>The sensor monitors the soil’s moisture content. When the value drops below a predefined threshold, the Arduino signals the relay to activate the pump. Once moisture levels rise, the pump is turned off to conserve water and power.</p>
+    </section>
+
+    <a href="index.html" class="back">← Back to Portfolio</a>
+  </main>
+</body>
+</html>
