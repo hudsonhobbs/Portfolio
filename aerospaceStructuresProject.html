@@ -1,0 +1,351 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Structural Beam Cross Section Design - Communication Satellite | Hudson Hobbs</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
+    }
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #34495e;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      padding: 18px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .card h2, .card h3 {
+      margin-top: 0;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .chip {
+      background: #ecf0f1;
+      border: 1px solid #dfe6e9;
+      color: #2c3e50;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 900px) {
+      .grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+    }
+
+    .img-placeholder {
+      border: 2px dashed #bdc3c7;
+      border-radius: 8px;
+      padding: 16px;
+      background: #fafafa;
+      color: #7f8c8d;
+      text-align: center;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .caption {
+      margin-top: 10px;
+      color: #7f8c8d;
+      font-size: 0.95rem;
+    }
+
+    ul {
+      margin: 0 0 0 18px;
+      padding: 0;
+    }
+    li {
+      margin: 6px 0;
+    }
+
+    .btnrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 12px;
+      border-radius: 6px;
+      background: #3498db;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background: #2f86c1;
+    }
+    .btn.secondary {
+      background: #95a5a6;
+    }
+    .btn.secondary:hover {
+      background: #7f8c8d;
+    }
+
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    code {
+      background: #f1f2f6;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Structural Beam Cross Section Design</h1>
+    <p>Communication Satellite | Aerospace Structures</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#overview">Overview</a>
+    <a href="#requirements">Requirements</a>
+    <a href="#method">Method</a>
+    <a href="#results">Results</a>
+    <a href="#files">Files</a>
+  </nav>
+
+  <section id="overview">
+    <div class="card">
+      <h2>Project Overview</h2>
+      <div class="grid">
+        <div>
+          <p>
+            <!-- TODO: Replace with your real summary -->
+            This project focused on designing and evaluating a structural beam cross section for a communication satellite
+            under specified loading and stiffness constraints. I compared candidate geometries, computed section properties,
+            and validated performance using analysis and (optional) FEA.
+          </p>
+
+          <div class="meta">
+            <!-- TODO: edit/remove chips as needed -->
+            <span class="chip">Role: Student Engineer</span>
+            <span class="chip">Tools: SolidWorks / Simulation, MATLAB, Excel</span>
+            <span class="chip">Skills: Beam theory, stress, deflection, FoS</span>
+            <span class="chip">Deliverables: Plots, calcs, final cross-section</span>
+          </div>
+
+          <div class="btnrow">
+            <!-- TODO: add links if you have them -->
+            <a class="btn secondary" href="index.html">← Back to Projects</a>
+            <!-- <a class="btn" href="YOUR_REPORT.pdf" target="_blank">Open Report (PDF)</a> -->
+            <!-- <a class="btn" href="YOUR_GITHUB_LINK" target="_blank">GitHub Repo</a> -->
+          </div>
+        </div>
+
+        <div>
+          <div class="img-placeholder">
+            <div>
+              <strong>Hero Image Placeholder</strong><br />
+              Replace with an isometric of the beam / satellite structure<br />
+              (ex: <code>&lt;img src="hero.jpg"&gt;</code>)
+            </div>
+          </div>
+          <div class="caption">
+            <em>Figure 1.</em> Insert a clean project “cover” image here.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="requirements">
+    <div class="card">
+      <h2>Requirements & Constraints</h2>
+      <p><!-- TODO: Replace with your actual requirements --></p>
+      <ul>
+        <li><strong>Loading:</strong> [Insert loading description: point loads, distributed loads, moments, etc.]</li>
+        <li><strong>Material:</strong> [Insert material + key properties (E, yield, density)]</li>
+        <li><strong>Geometry constraints:</strong> [Insert envelope limits, manufacturability constraints]</li>
+        <li><strong>Performance targets:</strong> [Max stress, max deflection, FoS, mass limit]</li>
+      </ul>
+
+      <div class="img-placeholder" style="margin-top:14px;">
+        <div>
+          <strong>Problem Statement / Diagram Placeholder</strong><br />
+          Insert the provided assignment diagram or free-body diagram.
+        </div>
+      </div>
+      <div class="caption">
+        <em>Figure 2.</em> Problem setup / FBD / given loads and boundary conditions.
+      </div>
+    </div>
+  </section>
+
+  <section id="method">
+    <div class="card">
+      <h2>Approach / Method</h2>
+
+      <h3>1) Candidate Cross Sections</h3>
+      <p>
+        <!-- TODO -->
+        I evaluated multiple cross-section concepts (e.g., I-beam, box beam, C-channel, custom thin-walled sections)
+        and compared second moment of area, torsional rigidity, and mass.
+      </p>
+
+      <div class="img-placeholder">
+        <div>
+          <strong>Cross Section Sketches Placeholder</strong><br />
+          Insert sketches / CAD screenshots of candidate sections.
+        </div>
+      </div>
+      <div class="caption">
+        <em>Figure 3.</em> Candidate cross-sections considered.
+      </div>
+
+      <h3>2) Section Properties & Hand Calculations</h3>
+      <ul>
+        <li>Centroid location: <code>x̄</code>, <code>ȳ</code></li>
+        <li>Second moment of area: <code>Ixx</code>, <code>Iyy</code></li>
+        <li>Bending stress: <code>σ = M y / I</code></li>
+        <li>Deflection: [Insert method: double integration, singularity functions, etc.]</li>
+        <li>Torsion (if applicable): [Insert J, shear flow, twist, etc.]</li>
+      </ul>
+
+      <div class="img-placeholder" style="margin-top:14px;">
+        <div>
+          <strong>Equations / Spreadsheet Screenshot Placeholder</strong><br />
+          Insert a clean screenshot of your key equations or spreadsheet model.
+        </div>
+      </div>
+      <div class="caption">
+        <em>Figure 4.</em> Key calculations used to size and compare sections.
+      </div>
+
+      <h3>3) Validation (Optional)</h3>
+      <p>
+        <!-- TODO -->
+        If you ran FEA, summarize the setup: boundary conditions, mesh strategy, and what you checked
+        (stress hot spots, displacement, convergence).
+      </p>
+
+      <div class="img-placeholder">
+        <div>
+          <strong>FEA Setup Placeholder</strong><br />
+          Insert mesh / fixtures / loads screenshots.
+        </div>
+      </div>
+      <div class="caption">
+        <em>Figure 5.</em> FEA setup (fixtures, loads, mesh).
+      </div>
+    </div>
+  </section>
+
+  <section id="results">
+    <div class="card">
+      <h2>Results</h2>
+
+      <h3>Final Design Summary</h3>
+      <ul>
+        <li><strong>Selected cross section:</strong> [Name/description]</li>
+        <li><strong>Mass / length:</strong> [Value + units]</li>
+        <li><strong>Max stress:</strong> [Value + units] (location: [where])</li>
+        <li><strong>Max deflection:</strong> [Value + units] (location: [where])</li>
+        <li><strong>Factor of Safety:</strong> [Value] (basis: yield / buckling / ultimate)</li>
+      </ul>
+
+      <div class="img-placeholder" style="margin-top:14px;">
+        <div>
+          <strong>Results Plot Placeholder</strong><br />
+          Insert stress plot, deflection plot, shear/moment diagrams, etc.
+        </div>
+      </div>
+      <div class="caption">
+        <em>Figure 6.</em> Primary performance result (stress/deflection/plots).
+      </div>
+
+      <div class="img-placeholder">
+        <div>
+          <strong>Final Cross Section Image Placeholder</strong><br />
+          Insert final CAD cross-section view with dimensions.
+        </div>
+      </div>
+      <div class="caption">
+        <em>Figure 7.</em> Final selected cross-section geometry.
+      </div>
+
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><!-- TODO --> Learned how stiffness-to-weight drives structural selection in aerospace design.</li>
+        <li><!-- TODO --> Practiced translating requirements into quantifiable checks (stress, deflection, FoS).</li>
+        <li><!-- TODO --> Improved ability to communicate analysis through clear plots and concise summaries.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="files">
+    <div class="card">
+      <h2>Downloads / References</h2>
+      <p>
+        Add links to your report, spreadsheets, CAD exports, or code.
+      </p>
+      <ul>
+        <!-- TODO: Uncomment and update filenames -->
+        <!-- <li><a href="AeroStructures_Report.pdf" target="_blank">Final Report (PDF)</a></li> -->
+        <!-- <li><a href="AeroStructures_Calcs.xlsx" target="_blank">Calculations (Excel)</a></li> -->
+        <!-- <li><a href="AeroStructures_Model.SLDPRT" target="_blank">CAD Model (SolidWorks)</a></li> -->
+        <!-- <li><a href="AeroStructures_Code.m" target="_blank">MATLAB Script</a></li> -->
+      </ul>
+      <div class="btnrow">
+        <a class="btn secondary" href="index.html">← Back to Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Hudson Hobbs</p>
+  </footer>
+</body>
+</html>
