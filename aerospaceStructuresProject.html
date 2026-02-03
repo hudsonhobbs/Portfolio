@@ -208,7 +208,7 @@
 
       <img src="setUpAeroProject.jpg" alt="Problem statement" style="width:100%; border-radius:8px;">
       <div class="caption">
-        <em>Figure 2.</em> Problem setup / FBD / given loads and boundary conditions.
+        <em>Figure 2.</em> Problem setup FBD with given loads and boundary conditions.
       </div>
     </div>
   </section>
@@ -217,16 +217,16 @@
     <div class="card">
       <h2>Approach / Method</h2>
 
-      <h3>1) Candidate Cross Sections</h3>
+      <h3>Candidate Cross Sections</h3>
       <p>
         <!-- TODO -->
-        I evaluated multiple cross-section concepts (e.g., I-beam, box beam, C-channel, custom thin-walled sections)
-        and compared second moment of area, torsional rigidity, and mass.
+        I evaluated I, T, and C-channel cross-section concepts, using the thin walled assumption,
+        and compared second moment of area, torsional rigidity, and total beam mass.
       </p>
 
       <div class="img-placeholder">
         <div>
-          <strong>Cross Section Sketches Placeholder</strong><br />
+          <strong>Cross Section Sketches Placeholder</strong><br/>
           Insert sketches / CAD screenshots of candidate sections.
         </div>
       </div>
@@ -234,26 +234,7 @@
         <em>Figure 3.</em> Candidate cross-sections considered.
       </div>
 
-      <h3>2) Section Properties & Hand Calculations</h3>
-      <ul>
-        <li>Centroid location: <code>x̄</code>, <code>ȳ</code></li>
-        <li>Second moment of area: <code>Ixx</code>, <code>Iyy</code></li>
-        <li>Bending stress: <code>σ = M y / I</code></li>
-        <li>Deflection: [Insert method: double integration, singularity functions, etc.]</li>
-        <li>Torsion (if applicable): [Insert J, shear flow, twist, etc.]</li>
-      </ul>
-
-      <div class="img-placeholder" style="margin-top:14px;">
-        <div>
-          <strong>Equations / Spreadsheet Screenshot Placeholder</strong><br />
-          Insert a clean screenshot of your key equations or spreadsheet model.
-        </div>
-      </div>
-      <div class="caption">
-        <em>Figure 4.</em> Key calculations used to size and compare sections.
-      </div>
-
-      <h3>3) Validation (Optional)</h3>
+      <h3>Validation</h3>
       <p>
         <!-- TODO -->
         If you ran FEA, summarize the setup: boundary conditions, mesh strategy, and what you checked
