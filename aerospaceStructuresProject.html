@@ -1,321 +1,418 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Structural Beam Cross Section Design - Communication Satellite | Hudson Hobbs</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structural Beam Design — Hudson Hobbs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f7f7f7;
+    :root {
+      --bg: #0d0f14;
+      --surface: #13161d;
+      --surface2: #1a1e28;
+      --border: #252a38;
+      --accent: #e8d5a3;
+      --accent2: #5b8dee;
+      --text: #cdd3e0;
+      --muted: #5e6780;
+      --heading: #f0f2f7;
     }
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 20px;
-      text-align: center;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(91,141,238,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91,141,238,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
     }
     nav {
-      background: #34495e;
-      padding: 10px;
-      text-align: center;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      background: rgba(13,15,20,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
-    nav a {
-      color: white;
-      margin: 0 15px;
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
       text-decoration: none;
-      font-weight: bold;
     }
-    nav a:hover {
-      text-decoration: underline;
+    .nav-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
     }
+    .nav-back:hover { color: var(--accent); }
 
-    section {
-      padding: 20px;
-      max-width: 1000px;
+    .project-hero {
+      position: relative;
+      z-index: 1;
+      padding: 140px 40px 80px;
+      border-bottom: 1px solid var(--border);
+      max-width: 1100px;
       margin: 0 auto;
     }
-
-    .card {
-      background: white;
-      padding: 18px;
+    .hero-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent2);
       margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .card h2, .card h3 {
-      margin-top: 0;
-    }
-
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .chip {
-      background: #ecf0f1;
-      border: 1px solid #dfe6e9;
-      color: #2c3e50;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    @media (min-width: 900px) {
-      .grid {
-        grid-template-columns: 1.2fr 0.8fr;
-      }
-    }
-
-    .img-placeholder {
-      border: 2px dashed #bdc3c7;
-      border-radius: 8px;
-      padding: 16px;
-      background: #fafafa;
-      color: #7f8c8d;
-      text-align: center;
-      min-height: 220px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 12px;
     }
-    .caption {
-      margin-top: 10px;
-      color: #7f8c8d;
-      font-size: 0.95rem;
+    .hero-meta::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent2);
     }
-
-    ul {
-      margin: 0 0 0 18px;
-      padding: 0;
+    .project-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      line-height: 1;
+      color: var(--heading);
+      letter-spacing: 0.03em;
+      margin-bottom: 16px;
     }
-    li {
-      margin: 6px 0;
+    .project-hero .subtitle {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 36px;
     }
-
-    .btnrow {
+    .wip-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border: 1px solid var(--accent2);
+      background: rgba(91,141,238,0.06);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent2);
+      margin-bottom: 24px;
+    }
+    .wip-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent2);
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .project-chips {
       display: flex;
       flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      padding: 5px 14px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    .proj-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .proj-section:last-of-type { border-bottom: none; }
+
+    .section-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 10px;
+    }
+    .proj-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.04em;
+      color: var(--heading);
+      margin-bottom: 24px;
+    }
+    .proj-section p {
+      font-size: 0.975rem;
+      font-weight: 300;
+      color: var(--text);
+      max-width: 700px;
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .proj-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
+      max-width: 700px;
+    }
+    .proj-section li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-weight: 300;
+      display: flex;
+      gap: 12px;
+    }
+    .proj-section li::before {
+      content: '—';
+      color: var(--accent2);
+      font-family: 'DM Mono', monospace;
+      flex-shrink: 0;
+    }
+    .proj-section li strong {
+      color: var(--heading);
+      font-weight: 500;
+    }
+
+    .img-full {
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      margin-top: 24px;
+      display: block;
+    }
+    .img-caption {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    .placeholder-box {
+      margin-top: 24px;
+      border: 1px dashed var(--border);
+      padding: 48px;
+      text-align: center;
+      background: var(--surface);
+    }
+    .placeholder-box p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 0;
+      max-width: none;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .result-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent2);
+      padding: 24px;
+    }
+    .result-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .result-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--heading);
+      line-height: 1;
+    }
+
+    .back-row { padding: 40px 0 0; }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
       gap: 10px;
-      margin-top: 12px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 12px;
-      border-radius: 6px;
-      background: #3498db;
-      color: white;
+      padding: 12px 24px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       text-decoration: none;
-      font-weight: bold;
+      transition: border-color 0.2s, color 0.2s;
     }
-    .btn:hover {
-      background: #2f86c1;
-    }
-    .btn.secondary {
-      background: #95a5a6;
-    }
-    .btn.secondary:hover {
-      background: #7f8c8d;
-    }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
 
     footer {
-      background: #2c3e50;
-      color: white;
-      text-align: center;
-      padding: 10px;
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+      display: flex;
+      justify-content: space-between;
+    }
+    footer .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: var(--accent);
+    }
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
     }
 
-    code {
-      background: #f1f2f6;
-      padding: 2px 6px;
-      border-radius: 6px;
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .project-hero, .content { padding-left: 20px; padding-right: 20px; }
+      .results-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>Structural Beam Cross Section Design</h1>
-    <p>Communication Satellite | Aerospace Structures</p>
-  </header>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="#overview">Overview</a>
-    <a href="#requirements">Requirements</a>
-    <a href="#method">Method</a>
-    <a href="#results">Results</a>
-    <a href="#files">Files</a>
+    <a href="index.html" class="nav-logo">HH</a>
+    <a href="index.html" class="nav-back">← Back to Portfolio</a>
   </nav>
 
-  <section id="overview">
-    <div class="card">
-      <h2>Project Overview</h2>
-      <div class="grid">
-        <div>
-          <p>
-            <!-- TODO: Replace with your real summary -->
-            This project focused on designing and evaluating a structural beam cross section for a communication satellite
-            under specified loading conditions. I was tasked to use SkyCiv to find the cheapest possible cross-section 
-            design for the beam. I further validated the results outside the constraints of the project by using solidworks
-            simulation.
-          </p>
-
-          <div class="meta">
-            <!-- TODO: edit/remove chips as needed -->
-            <span class="chip">Role: Student Structural Engineer</span>
-            <span class="chip">Tools: SolidWorks / Simulation, MATLAB, Excel</span>
-            <span class="chip">Skills: Solid Mechanics, deflection, FoS, shear flow, data management</span>
-            <span class="chip">Deliverables: Plots, calculations, final cross-section, quad chart</span>
-          </div>
-
-          <div class="btnrow">
-            <!-- TODO: add links if you have them -->
-            <a class="btn secondary" href="index.html">← Back to Projects</a>
-            <!-- <a class="btn" href="YOUR_REPORT.pdf" target="_blank">Open Report (PDF)</a> -->
-            <!-- <a class="btn" href="YOUR_GITHUB_LINK" target="_blank">GitHub Repo</a> -->
-          </div>
-        </div>
-
-        <div>
-          <img src="hero.jpg" alt="Beam CAD model" style="width:100%; border-radius:8px;">
-          <div class="caption">
-            <em>Figure 1.</em> Isometic view of beam model in SolidWorks.
-          </div>
-        </div>
-      </div>
+  <div class="project-hero">
+    <div class="hero-meta">Project 03 — Aerospace Structures</div>
+    <h1>Structural Beam<br>Cross Section Design</h1>
+    <p class="subtitle">Optimal beam cross-section design for a communication satellite under specified loading — using SkyCiv analysis and SolidWorks Simulation validation.</p>
+    <div class="wip-banner">
+      <div class="wip-dot"></div>
+      Page in progress — content and images being added
     </div>
-  </section>
+    <div class="project-chips">
+      <span class="chip">SolidWorks</span>
+      <span class="chip">SkyCiv</span>
+      <span class="chip">MATLAB</span>
+      <span class="chip">Excel</span>
+      <span class="chip">6061-T6 Aluminum</span>
+      <span class="chip">Aerospace Structures</span>
+    </div>
+  </div>
 
-  <section id="requirements">
-    <div class="card">
+  <div class="content">
+
+    <div class="proj-section">
+      <div class="section-number">// 01 — Overview</div>
+      <h2>Project Overview</h2>
+      <p>This project focused on designing and evaluating a structural beam cross section for a communication satellite under specified loading conditions. The objective was to find the lowest-cost cross-section that meets structural demands — minimizing mass while maintaining required factors of safety.</p>
+      <p>I used SkyCiv to perform the primary structural analysis, then independently validated results using SolidWorks Simulation to cross-check stress and deflection outputs.</p>
+      <img src="hero.jpg" alt="Beam CAD model" class="img-full">
+      <div class="img-caption">Fig. 1 — Isometric view of beam model in SolidWorks.</div>
+    </div>
+
+    <div class="proj-section">
+      <div class="section-number">// 02 — Requirements</div>
       <h2>Requirements & Constraints</h2>
-      <p><!-- TODO: Replace with your actual requirements --></p>
       <ul>
         <li><strong>Material:</strong> 6061-T6 Aluminum Alloy</li>
-        <li><strong>Geometry constraints:</strong> Web and Flange dimensions must not exceed 700mm. Wall thickness should not go below 7 mm</li>
-        <li><strong>Performance targets:</strong> Minimize cost while meeting the structural demands for the given loading condition</li>
+        <li><strong>Web / Flange geometry:</strong> Dimensions must not exceed 700 mm; wall thickness ≥ 7 mm</li>
+        <li><strong>Objective:</strong> Minimize cost while satisfying stress, deflection, and FoS requirements under the given loading</li>
       </ul>
-
-      <img src="setUpAeroProject.jpg" alt="Problem statement" style="width:100%; border-radius:8px;">
-      <div class="caption">
-        <em>Figure 2.</em> Problem setup FBD with given loads and boundary conditions.
-      </div>
+      <img src="setUpAeroProject.jpg" alt="Problem FBD" class="img-full">
+      <div class="img-caption">Fig. 2 — Problem setup: free body diagram with loads and boundary conditions.</div>
     </div>
-  </section>
 
-  <section id="method">
-    <div class="card">
-      <h2>Approach / Method</h2>
+    <div class="proj-section">
+      <div class="section-number">// 03 — Approach</div>
+      <h2>Candidate Cross Sections</h2>
+      <p>I evaluated I, T, and C-channel cross-section geometries using the thin-walled beam assumption. For each candidate, I compared second moment of area, torsional rigidity, shear flow, and total beam mass to identify the most structurally efficient option.</p>
+      <div class="placeholder-box">
+        <p>Cross-section sketches / CAD screenshots — coming soon</p>
+      </div>
+      <div class="img-caption" style="margin-top:10px;">Fig. 3 — Candidate cross-sections considered.</div>
+    </div>
 
-      <h3>Candidate Cross Sections</h3>
-      <p>
-        <!-- TODO -->
-        I evaluated I, T, and C-channel cross-section concepts, using the thin walled assumption,
-        and compared second moment of area, torsional rigidity, and total beam mass.
-      </p>
-
-      <div class="img-placeholder">
-        <div>
-          <strong>Cross Section Sketches Placeholder</strong><br/>
-          Insert sketches / CAD screenshots of candidate sections.
+    <div class="proj-section">
+      <div class="section-number">// 04 — Results</div>
+      <h2>Final Design Summary</h2>
+      <p>Results and final cross-section details will be added as the page is completed. Key performance metrics are summarized below.</p>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-label">Selected Section</div>
+          <div class="result-val">TBD</div>
+        </div>
+        <div class="result-card">
+          <div class="result-label">Max Stress</div>
+          <div class="result-val">TBD</div>
+        </div>
+        <div class="result-card">
+          <div class="result-label">Factor of Safety</div>
+          <div class="result-val">TBD</div>
         </div>
       </div>
-      <div class="caption">
-        <em>Figure 3.</em> Candidate cross-sections considered.
-      </div>
-
-      <h3>Validation</h3>
-      <p>
-        <!-- TODO -->
-        If you ran FEA, summarize the setup: boundary conditions, mesh strategy, and what you checked
-        (stress hot spots, displacement, convergence).
-      </p>
-
-      <div class="img-placeholder">
-        <div>
-          <strong>FEA Setup Placeholder</strong><br />
-          Insert mesh / fixtures / loads screenshots.
-        </div>
-      </div>
-      <div class="caption">
-        <em>Figure 5.</em> FEA setup (fixtures, loads, mesh).
+      <div class="placeholder-box">
+        <p>Stress plots, deflection diagrams, shear/moment diagrams — coming soon</p>
       </div>
     </div>
-  </section>
 
-  <section id="results">
-    <div class="card">
-      <h2>Results</h2>
-
-      <h3>Final Design Summary</h3>
+    <div class="proj-section">
+      <div class="section-number">// 05 — Takeaways</div>
+      <h2>Key Takeaways</h2>
       <ul>
-        <li><strong>Selected cross section:</strong> [Name/description]</li>
-        <li><strong>Mass / length:</strong> [Value + units]</li>
-        <li><strong>Max stress:</strong> [Value + units] (location: [where])</li>
-        <li><strong>Max deflection:</strong> [Value + units] (location: [where])</li>
-        <li><strong>Factor of Safety:</strong> [Value] (basis: yield / buckling / ultimate)</li>
-      </ul>
-
-      <div class="img-placeholder" style="margin-top:14px;">
-        <div>
-          <strong>Results Plot Placeholder</strong><br />
-          Insert stress plot, deflection plot, shear/moment diagrams, etc.
-        </div>
-      </div>
-      <div class="caption">
-        <em>Figure 6.</em> Primary performance result (stress/deflection/plots).
-      </div>
-
-      <div class="img-placeholder">
-        <div>
-          <strong>Final Cross Section Image Placeholder</strong><br />
-          Insert final CAD cross-section view with dimensions.
-        </div>
-      </div>
-      <div class="caption">
-        <em>Figure 7.</em> Final selected cross-section geometry.
-      </div>
-
-      <h3>Key Takeaways</h3>
-      <ul>
-        <li><!-- TODO --> Learned how stiffness-to-weight drives structural selection in aerospace design.</li>
-        <li><!-- TODO --> Practiced translating requirements into quantifiable checks (stress, deflection, FoS).</li>
-        <li><!-- TODO --> Improved ability to communicate analysis through clear plots and concise summaries.</li>
+        <li>Learned how stiffness-to-weight ratio drives cross-section selection in aerospace structural design.</li>
+        <li>Practiced translating mission requirements into quantifiable structural checks: stress, deflection, and FoS.</li>
+        <li>Improved ability to communicate analysis through clear plots and concise engineering summaries.</li>
       </ul>
     </div>
-  </section>
 
-  <section id="files">
-    <div class="card">
-      <h2>Downloads / References</h2>
-      <p>
-        Add links to your report, spreadsheets, CAD exports, or code.
-      </p>
-      <ul>
-        <!-- TODO: Uncomment and update filenames -->
-        <!-- <li><a href="AeroStructures_Report.pdf" target="_blank">Final Report (PDF)</a></li> -->
-        <!-- <li><a href="AeroStructures_Calcs.xlsx" target="_blank">Calculations (Excel)</a></li> -->
-        <!-- <li><a href="AeroStructures_Model.SLDPRT" target="_blank">CAD Model (SolidWorks)</a></li> -->
-        <!-- <li><a href="AeroStructures_Code.m" target="_blank">MATLAB Script</a></li> -->
-      </ul>
-      <div class="btnrow">
-        <a class="btn secondary" href="index.html">← Back to Projects</a>
-      </div>
+    <div class="back-row">
+      <a href="index.html" class="back-btn">← Back to Portfolio</a>
     </div>
-  </section>
+  </div>
 
   <footer>
-    <p>&copy; 2025 Hudson Hobbs</p>
+    <div class="footer-logo">Hudson Hobbs</div>
+    <p>&copy; 2025 · Colorado School of Mines</p>
   </footer>
+
 </body>
 </html>

@@ -3,121 +3,614 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hudson Hobbs - Projects</title>
+  <title>Hudson Hobbs — Mechanical Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #13161d;
+      --surface2: #1a1e28;
+      --border: #252a38;
+      --accent: #e8d5a3;
+      --accent2: #5b8dee;
+      --text: #cdd3e0;
+      --muted: #5e6780;
+      --heading: #f0f2f7;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f7f7f7;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 20px;
-      text-align: center;
+
+    /* ─── GRID LINES BACKGROUND ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(91,141,238,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91,141,238,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
     }
+
+    /* ─── NAV ─── */
     nav {
-      background: #34495e;
-      padding: 10px;
-      text-align: center;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      background: rgba(13,15,20,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
-    nav a {
-      color: white;
-      margin: 0 15px;
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      color: var(--muted);
       text-decoration: none;
-      font-weight: bold;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
     }
-    section {
-      padding: 20px;
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 40px 80px;
+      z-index: 1;
     }
-    .project {
-      background: white;
-      padding: 15px;
+
+    .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent2);
       margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .project h3 {
-      margin-top: 0;
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent2);
     }
-    .project a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #3498db;
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: 0.92;
+      color: var(--heading);
+      letter-spacing: 0.02em;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+      display: block;
+    }
+
+    .hero-desc {
+      max-width: 520px;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 48px;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .stat-item {
+      border-left: 2px solid var(--accent);
+      padding-left: 16px;
+    }
+
+    .stat-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--heading);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: #0d0f14;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
     }
-    .project a:hover {
-      text-decoration: underline;
+    .hero-cta:hover { background: #f5e8c4; transform: translateY(-2px); }
+
+    .hero-tag {
+      position: absolute;
+      right: 60px;
+      bottom: 80px;
+      writing-mode: vertical-rl;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
+
+    /* ─── SECTION SHARED ─── */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent2);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--heading);
+      letter-spacing: 0.04em;
+      margin-bottom: 48px;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-text { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--text); }
+    .about-text p { margin-bottom: 16px; }
+
+    .skills-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .skill-chip {
+      padding: 10px 14px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .skill-chip:hover {
+      border-left-color: var(--accent2);
+      background: #1e2435;
+    }
+
+    /* ─── PROJECTS ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      padding: 32px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, border-top-color 0.25s, box-shadow 0.25s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-top-color: var(--accent2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .project-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 16px;
+      transition: color 0.25s;
+    }
+    .project-card:hover .project-number { color: var(--accent); }
+
+    .project-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.04em;
+      color: var(--heading);
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      padding: 3px 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .project-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .project-link::after { content: '→'; transition: transform 0.2s; }
+    .project-card:hover .project-link::after { transform: translateX(4px); }
+
+    .project-card.wip {
+      opacity: 0.55;
+      pointer-events: none;
+      border-top-color: var(--muted);
+    }
+
+    .wip-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--heading);
+      letter-spacing: 0.04em;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .contact-box p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 16px; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 24px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    .contact-link-icon {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      min-width: 80px;
+    }
+
+    .contact-link-val {
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    /* ─── FOOTER ─── */
     footer {
-      background: #2c3e50;
-      color: white;
-      text-align: center;
-      padding: 10px;
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow { animation: fadeUp 0.6s ease both 0.1s; }
+    .hero h1 { animation: fadeUp 0.6s ease both 0.25s; }
+    .hero-desc { animation: fadeUp 0.6s ease both 0.4s; }
+    .hero-stats { animation: fadeUp 0.6s ease both 0.5s; }
+    .hero-cta { animation: fadeUp 0.6s ease both 0.6s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { gap: 16px; }
+      .hero { padding: 100px 20px 60px; }
+      .hero-tag { display: none; }
+      .section { padding: 60px 20px; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .contact-box { grid-template-columns: 1fr; padding: 32px; gap: 32px; }
+      footer { flex-direction: column; gap: 10px; text-align: center; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Hudson Hobbs</h1>
-    <p>Colorado School of Mines | B.S. Mechanical Engineering | May 2027 | Minor in Robotics and Intelligent Systems | GPA: 3.4</p>
-    <p><p>
-    <p>Committed to advancing engineering solutions that balance performance, efficiency, and innovation in modern mechanical systems.</p>
-  </header>
+
   <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <div class="nav-logo">HH</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am a mechanical engineering student with project experience inside and outside the classroom, which has equipped me with skills in CAD modeling, finite element analysis (FEA), programming, robotics, and additive manufacturing, among others. Along the way, I am informing my engineering problem-solving process, so I am always improving my own skills and learning to engineer better and better.</p>
-  </section>
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>Automated Plant Watering System</h3>
-      <p>A soil moisture–based watering system using Arduino, a pump, and a water reservoir. Automatically hydrates plants based on real-time sensor readings. Built for reliability and low maintenance.</p>
-      <a href="automatedPlantWateringSystem.html">View Project Page →</a>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Colorado School of Mines · B.S. Mechanical Engineering</div>
+      <h1>Hudson<span>Hobbs</span></h1>
+      <p class="hero-desc">
+        Mechanical engineering student focused on CAD, FEA, robotics, and additive manufacturing. 
+        Building real solutions to real problems — from structural analysis to embedded systems.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-value">3.4</div>
+          <div class="stat-label">GPA</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">2027</div>
+          <div class="stat-label">Graduation</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">ME+</div>
+          <div class="stat-label">Robotics Minor</div>
+        </div>
+      </div>
+      <a href="#projects" class="hero-cta">View Projects ↓</a>
     </div>
-    <!--
-    <div class="project">
-      <h3>Structural Beam Cross Section Design - Communication Satellite</h3>
-      <p></p>
-      <a href="aerospaceStructuresProject.html">View Project Page →</a>
-    </div>
-    -->
-    <div class="project">
-      <h3>AC Bookshelf Project</h3>
-      <p>Custom 3D printed PLA shelf structure designed for storing books above my AC unit, supported by FEA validation.</p>
-      <a href="ac-bookshelf-project.html">View Project Page →</a>
-    </div>
+    <div class="hero-tag">Mechanical · Structures · Robotics</div>
   </section>
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:hudsonhobbs4@gmail.com">hudsonhobbs4@gmail.com</a></p>
-    <p>Alternate Email: <a href="mailto:hudson_hobbs@mines.edu">hudson_hobbs@mines.edu</a><p>
-    <p><a href="https://www.linkedin.com/in/hudson-hobbs" target="_blank">LinkedIn</a></p>
-  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── ABOUT ─── -->
+  <div class="section" id="about">
+    <div class="section-label">// 01 — About</div>
+    <div class="section-title">Engineering Problems.<br>Real Solutions.</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a mechanical engineering student at Colorado School of Mines with hands-on project experience both inside and outside the classroom. My work spans from custom CAD design and finite element analysis to embedded systems and robotics.</p>
+        <p>I care about building things that actually work — and understanding <em>why</em> they work. Every project is an opportunity to improve my engineering process, validate assumptions, and deliver something better than before.</p>
+        <p>Currently pursuing a minor in Robotics and Intelligent Systems alongside my core ME curriculum.</p>
+      </div>
+      <div>
+        <div class="section-label" style="margin-bottom: 16px;">Core Skills</div>
+        <div class="skills-list">
+          <div class="skill-chip">SolidWorks CAD</div>
+          <div class="skill-chip">FEA / Simulation</div>
+          <div class="skill-chip">3D Printing</div>
+          <div class="skill-chip">Arduino / C++</div>
+          <div class="skill-chip">MATLAB</div>
+          <div class="skill-chip">Solid Mechanics</div>
+          <div class="skill-chip">Robotics</div>
+          <div class="skill-chip">Data Analysis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── PROJECTS ─── -->
+  <div class="section" id="projects">
+    <div class="section-label">// 02 — Projects</div>
+    <div class="section-title">Selected Work</div>
+    <div class="projects-grid">
+
+      <a href="automatedPlantWateringSystem.html" class="project-card">
+        <div class="project-number">01</div>
+        <h3>Automated Plant Watering System</h3>
+        <p>Soil moisture–based irrigation system using Arduino, a mini pump, and real-time sensor feedback. Built for reliability, low maintenance, and accurate hydration control.</p>
+        <div class="project-tags">
+          <span class="tag">Arduino</span>
+          <span class="tag">C++</span>
+          <span class="tag">Sensors</span>
+          <span class="tag">Embedded</span>
+        </div>
+        <span class="project-link">View Project</span>
+      </a>
+
+      <a href="ac-bookshelf-project.html" class="project-card">
+        <div class="project-number">02</div>
+        <h3>AC Bookshelf — CAD & FEA</h3>
+        <p>Custom 3D-printed bracket and shelf system designed around an AC unit. Full SolidWorks CAD workflow with Simulation-based FEA validation — FOS > 8.0 under 40 lb load.</p>
+        <div class="project-tags">
+          <span class="tag">SolidWorks</span>
+          <span class="tag">FEA</span>
+          <span class="tag">3D Print</span>
+          <span class="tag">PLA</span>
+        </div>
+        <span class="project-link">View Project</span>
+      </a>
+
+      <div class="project-card wip">
+        <span class="wip-badge">In Progress</span>
+        <div class="project-number">03</div>
+        <h3>Structural Beam Design — Comm. Satellite</h3>
+        <p>Aerospace structures coursework: optimal I/T/C-channel beam cross-section for a communication satellite under specified loading. SkyCiv + SolidWorks validation.</p>
+        <div class="project-tags">
+          <span class="tag">SkyCiv</span>
+          <span class="tag">SolidWorks</span>
+          <span class="tag">MATLAB</span>
+          <span class="tag">Aerospace</span>
+        </div>
+        <span class="project-link">Coming Soon</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── CONTACT ─── -->
+  <div class="section" id="contact">
+    <div class="contact-box">
+      <div>
+        <div class="section-label">// 03 — Contact</div>
+        <h2>Let's Connect</h2>
+        <p>Open to internship opportunities, research collaborations, and interesting engineering conversations. Don't hesitate to reach out.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:hudsonhobbs4@gmail.com" class="contact-link">
+          <span class="contact-link-icon">Email</span>
+          <span class="contact-link-val">hudsonhobbs4@gmail.com</span>
+        </a>
+        <a href="mailto:hudson_hobbs@mines.edu" class="contact-link">
+          <span class="contact-link-icon">Mines</span>
+          <span class="contact-link-val">hudson_hobbs@mines.edu</span>
+        </a>
+        <a href="https://www.linkedin.com/in/hudson-hobbs" target="_blank" class="contact-link">
+          <span class="contact-link-icon">LinkedIn</span>
+          <span class="contact-link-val">hudson-hobbs</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <footer>
-    <p>&copy; 2025 Hudson Hobbs</p>
+    <div class="footer-logo">Hudson Hobbs</div>
+    <p>&copy; 2025 · Colorado School of Mines · Mechanical Engineering</p>
   </footer>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
