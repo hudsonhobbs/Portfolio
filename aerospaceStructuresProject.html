@@ -306,10 +306,93 @@
       color: var(--muted);
     }
 
+    /* ── COMPARISON CARDS ── */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .comparison-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+    }
+    .comparison-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--heading);
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+    .comparison-card ul {
+      margin: 0;
+      max-width: none;
+    }
+    .comparison-card li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-bottom-color: #1e2333;
+    }
+    .comparison-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 4px 10px;
+      display: inline-block;
+      margin-bottom: 14px;
+      border-radius: 2px;
+    }
+    .eliminated { border-top: 3px solid var(--muted); }
+    .eliminated .comparison-label { background: rgba(94,103,128,0.15); color: var(--muted); }
+    .runner-up { border-top: 3px solid var(--accent2); }
+    .runner-up .comparison-label { background: rgba(91,141,238,0.12); color: var(--accent2); }
+    .selected { border-top: 3px solid #6bcf9e; }
+    .selected .comparison-label { background: rgba(107,207,158,0.12); color: #6bcf9e; }
+    .selected h3 { color: #6bcf9e; }
+
+    /* ── DIMENSIONS ── */
+    .dim-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px;
+      margin-top: 24px;
+    }
+    .dim-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .dim-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .dim-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .dim-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
       .project-hero, .content { padding-left: 20px; padding-right: 20px; }
       .results-grid { grid-template-columns: 1fr; }
+      .comparison-grid { grid-template-columns: 1fr; }
+      .dim-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -321,13 +404,9 @@
   </nav>
 
   <div class="project-hero">
-    <div class="hero-meta">Project 03 — Aerospace Structures</div>
+    <div class="hero-meta">Project 03 — Aerospace Structures · MEGN453 Fall '25</div>
     <h1>Structural Beam<br>Cross Section Design</h1>
-    <p class="subtitle">Optimal beam cross-section design for a communication satellite under specified loading — using SkyCiv analysis and SolidWorks Simulation validation.</p>
-    <div class="wip-banner">
-      <div class="wip-dot"></div>
-      Page in progress — content and images being added
-    </div>
+    <p class="subtitle">Optimal I-beam cross-section design for the PRK Aerospace GTO communication satellite structural member — minimizing launch cost while satisfying structural demands.</p>
     <div class="project-chips">
       <span class="chip">SolidWorks</span>
       <span class="chip">SkyCiv</span>
@@ -335,72 +414,163 @@
       <span class="chip">Excel</span>
       <span class="chip">6061-T6 Aluminum</span>
       <span class="chip">Aerospace Structures</span>
+      <span class="chip">MEGN453</span>
     </div>
   </div>
 
   <div class="content">
 
+    <!-- ── 01 OVERVIEW ── -->
     <div class="proj-section">
       <div class="section-number">// 01 — Overview</div>
       <h2>Project Overview</h2>
-      <p>This project focused on designing and evaluating a structural beam cross section for a communication satellite under specified loading conditions. The objective was to find the lowest-cost cross-section that meets structural demands — minimizing mass while maintaining required factors of safety.</p>
-      <p>I used SkyCiv to perform the primary structural analysis, then independently validated results using SolidWorks Simulation to cross-check stress and deflection outputs.</p>
-      <img src="hero.jpg" alt="Beam CAD model" class="img-full">
-      <div class="img-caption">Fig. 1 — Isometric view of beam model in SolidWorks.</div>
+      <p>This project tasked our team with designing the primary structural member for PRK Aerospace's GTO communications satellite. The goal was to minimize total launch cost — driven by material mass — while ensuring the beam could withstand the specified inertial loading conditions experienced during orbital maneuvers.</p>
+      <p>We evaluated T, C-channel, and I-beam cross-section geometries across two candidate materials (6061-T6 Aluminum at $2.75/kg and Ti-6Al-4V Titanium at $23.25/kg), using SkyCiv for primary structural analysis. I independently validated the winning design using SolidWorks Simulation.</p>
+      <img src="hero.jpg" alt="I-beam CAD model in SolidWorks" class="img-full">
+      <div class="img-caption">Fig. 1 — Isometric view of final I-beam model in SolidWorks.</div>
     </div>
 
+    <!-- ── 02 REQUIREMENTS ── -->
     <div class="proj-section">
-      <div class="section-number">// 02 — Requirements</div>
-      <h2>Requirements & Constraints</h2>
+      <div class="section-number">// 02 — Requirements & Loading</div>
+      <h2>Requirements & Loading Conditions</h2>
       <ul>
-        <li><strong>Material:</strong> 6061-T6 Aluminum Alloy</li>
-        <li><strong>Web / Flange geometry:</strong> Dimensions must not exceed 700 mm; wall thickness ≥ 7 mm</li>
-        <li><strong>Objective:</strong> Minimize cost while satisfying stress, deflection, and FoS requirements under the given loading</li>
+        <li><strong>Materials considered:</strong> 6061-T6 Aluminum ($2.75/kg) and Ti-6Al-4V Titanium ($23.25/kg)</li>
+        <li><strong>Geometry constraints:</strong> Web and flange dimensions ≤ 700 mm; wall thickness ≥ 7 mm</li>
+        <li><strong>Objective:</strong> Minimize total launch cost while meeting all structural performance requirements</li>
+        <li><strong>Span:</strong> 10 m simply supported beam</li>
+        <li><strong>Applied loads:</strong> 27 kN/m distributed over 0–3 m, 18 kN point load at 6 m, 17 kN/m distributed over 9–10 m</li>
+        <li><strong>Reactions:</strong> 67.125 kN at x = 0 m, 48.875 kN at x = 8 m</li>
       </ul>
-      <img src="setUpAeroProject.jpg" alt="Problem FBD" class="img-full">
-      <div class="img-caption">Fig. 2 — Problem setup: free body diagram with loads and boundary conditions.</div>
+      <img src="setUpAeroProject.jpg" alt="Loading diagram FBD" class="img-full">
+      <div class="img-caption">Fig. 2 — Free body diagram with all applied loads and support reactions (SkyCiv).</div>
     </div>
 
+    <!-- ── 03 ANALYSIS ── -->
     <div class="proj-section">
-      <div class="section-number">// 03 — Approach</div>
+      <div class="section-number">// 03 — Structural Analysis</div>
+      <h2>Shear & Moment Diagrams</h2>
+      <p>SkyCiv was used to generate shear force and bending moment diagrams across the full 10 m span. The bending moment peaks at approximately 78 kN·m between x = 2–3 m, and a secondary local maximum of −22 kN·m occurs near x = 8 m at the right support. These values governed the required section modulus for the cross-section design.</p>
+      <img src="bendingMoment.png" alt="Bending moment diagram" class="img-full">
+      <div class="img-caption">Fig. 3 — Bending moment in Z (kN·m) across 10 m beam span. Peak ≈ 78 kN·m at x ≈ 2.5 m.</div>
+      <img src="shearForce.png" alt="Shear force diagram" class="img-full" style="margin-top:20px;">
+      <div class="img-caption">Fig. 4 — Shear force in Y (kN) across 10 m span. Max shear = 67.125 kN at left support.</div>
+    </div>
+
+    <!-- ── 04 CROSS SECTIONS ── -->
+    <div class="proj-section">
+      <div class="section-number">// 04 — Cross-Section Comparison</div>
       <h2>Candidate Cross Sections</h2>
-      <p>I evaluated I, T, and C-channel cross-section geometries using the thin-walled beam assumption. For each candidate, I compared second moment of area, torsional rigidity, shear flow, and total beam mass to identify the most structurally efficient option.</p>
-      <div class="placeholder-box">
-        <p>Cross-section sketches / CAD screenshots — coming soon</p>
+      <p>Three cross-section geometries were evaluated under the thin-walled beam assumption, comparing second moment of area, torsional rigidity, shear flow, warping susceptibility, and total material cost for both materials. All candidate sections used 7 mm wall thickness.</p>
+
+      <div class="comparison-grid">
+        <div class="comparison-card eliminated">
+          <div class="comparison-label">Eliminated</div>
+          <h3>T Cross-Section</h3>
+          <ul>
+            <li>Required considerably more material to achieve the same structural performance as the other geometries</li>
+            <li>No warping or twisting under symmetric loading — load applied through its axis of symmetry</li>
+            <li>Highest material cost of all three candidates for both aluminum and titanium</li>
+            <li>Most expensive option: $763,863 (Al) / $759,750 (Ti)</li>
+          </ul>
+        </div>
+        <div class="comparison-card runner-up">
+          <div class="comparison-label">Runner-Up</div>
+          <h3>C Cross-Section</h3>
+          <ul>
+            <li>Most cost-effective option across both materials — $556,145 (Al) / $614,713 (Ti)</li>
+            <li>Largest internal volume: 1% more than I-beam, enabling more instrument storage</li>
+            <li>Susceptible to warping and twisting under the given loading conditions — shear center offset from centroid requires additional analysis or design modifications</li>
+            <li>Only ~$400 cheaper than the I-beam in aluminum — not worth the torsional risk</li>
+          </ul>
+        </div>
+        <div class="comparison-card selected">
+          <div class="comparison-label">Selected ✓</div>
+          <h3>I Cross-Section</h3>
+          <ul>
+            <li>Doubly-symmetric geometry — no warping or twisting under the given loading since load is applied through an axis of symmetry</li>
+            <li>Ranked second most cost-effective: $556,518 (Al) — only ~$400 more than the C-beam</li>
+            <li>Comparable instrument storage volume to the C-beam</li>
+            <li>Superior structural stability and reliability over the mission lifetime</li>
+          </ul>
+        </div>
       </div>
-      <div class="img-caption" style="margin-top:10px;">Fig. 3 — Candidate cross-sections considered.</div>
+
+      <img src="quadchart.jpg" alt="Full quad chart with cross-section analysis" class="img-full" style="margin-top:32px;">
+      <div class="img-caption">Fig. 5 — Full quad chart: cross-section analysis, cost comparison, shear/moment diagrams, and final geometry. MEGN453 Fall '25.</div>
     </div>
 
+    <!-- ── 05 RESULTS ── -->
     <div class="proj-section">
-      <div class="section-number">// 04 — Results</div>
+      <div class="section-number">// 05 — Final Design</div>
       <h2>Final Design Summary</h2>
-      <p>Results and final cross-section details will be added as the page is completed. Key performance metrics are summarized below.</p>
-      <div class="results-grid">
+      <p>The selected design is a 6061-T6 Aluminum I-beam with 222 mm flanges, 650 mm web height, and 7 mm uniform wall thickness throughout. This geometry satisfies all structural requirements at the lowest viable cost.</p>
+
+      <div class="results-grid" style="grid-template-columns: repeat(4, 1fr);">
         <div class="result-card">
           <div class="result-label">Selected Section</div>
-          <div class="result-val">TBD</div>
+          <div class="result-val">I-Beam</div>
         </div>
         <div class="result-card">
-          <div class="result-label">Max Stress</div>
-          <div class="result-val">TBD</div>
+          <div class="result-label">Material</div>
+          <div class="result-val">6061-T6 Al</div>
         </div>
         <div class="result-card">
-          <div class="result-label">Factor of Safety</div>
-          <div class="result-val">TBD</div>
+          <div class="result-label">Total Cost</div>
+          <div class="result-val">$556,518</div>
+        </div>
+        <div class="result-card">
+          <div class="result-label">Wall Thickness</div>
+          <div class="result-val">7 mm</div>
         </div>
       </div>
-      <div class="placeholder-box">
-        <p>Stress plots, deflection diagrams, shear/moment diagrams — coming soon</p>
+
+      <div class="dim-card">
+        <div class="dim-title">Final I-Beam Geometry</div>
+        <div class="dim-grid">
+          <div class="dim-item">
+            <div class="dim-val">222 mm</div>
+            <div class="dim-label">Flange Width</div>
+          </div>
+          <div class="dim-item">
+            <div class="dim-val">650 mm</div>
+            <div class="dim-label">Web Height</div>
+          </div>
+          <div class="dim-item">
+            <div class="dim-val">7 mm</div>
+            <div class="dim-label">Wall Thickness</div>
+          </div>
+          <div class="dim-item">
+            <div class="dim-val">10 m</div>
+            <div class="dim-label">Beam Span</div>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- ── 06 FEA ── -->
     <div class="proj-section">
-      <div class="section-number">// 05 — Takeaways</div>
+      <div class="section-number">// 06 — SolidWorks Validation</div>
+      <h2>FEA Validation</h2>
+      <p>To independently verify the SkyCiv results, I modeled the final I-beam in SolidWorks and ran a Simulation study using the same loading and boundary conditions. Pin supports were applied at x = 0 and x = 8 m; distributed and point loads were applied to match the mission loading profile.</p>
+      <p>The displacement results from SolidWorks were consistent with the SkyCiv analytical outputs, confirming the beam geometry is correctly sized. The FEA displacement plot shows a minimum of −13.66 mm and a maximum of +6.21 mm, with the largest deflection occurring in the heavily loaded left span.</p>
+
+      <img src="feaSetup.png" alt="FEA setup with loads and fixtures" class="img-full">
+      <div class="img-caption">Fig. 6 — SolidWorks Simulation setup: pin fixtures (green), distributed and point loads (pink arrows).</div>
+
+      <img src="feaDisplacement.png" alt="FEA displacement results" class="img-full" style="margin-top:20px;">
+      <div class="img-caption">Fig. 7 — Displacement plot: min −13.66 mm (mid-left span), max +6.21 mm (right end). Consistent with SkyCiv analysis.</div>
+    </div>
+
+    <!-- ── 07 TAKEAWAYS ── -->
+    <div class="proj-section">
+      <div class="section-number">// 07 — Takeaways</div>
       <h2>Key Takeaways</h2>
       <ul>
-        <li>Learned how stiffness-to-weight ratio drives cross-section selection in aerospace structural design.</li>
-        <li>Practiced translating mission requirements into quantifiable structural checks: stress, deflection, and FoS.</li>
-        <li>Improved ability to communicate analysis through clear plots and concise engineering summaries.</li>
+        <li>The I-beam's doubly-symmetric geometry eliminated warping and torsion concerns that made the C-channel a structural risk — at only ~$400 more in cost, it was clearly the right call.</li>
+        <li>Material cost dominates launch economics: titanium was structurally viable but 20–25× more expensive per kg, making aluminum the decisive choice despite lower specific stiffness.</li>
+        <li>SkyCiv and SolidWorks Simulation produced consistent displacement results, validating the analytical thin-walled beam approach as sufficient for preliminary design at this scale.</li>
+        <li>Practiced translating mission-level requirements (minimize launch cost) into quantifiable engineering checks: shear flow, bending stress, deflection, and cross-section geometry.</li>
       </ul>
     </div>
 
