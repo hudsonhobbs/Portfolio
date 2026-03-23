@@ -306,6 +306,70 @@
       color: var(--muted);
     }
 
+    /* ── THOUGHT PROCESS ── */
+    .thought-block {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .thought-block:last-child { border-bottom: none; }
+    .thought-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .thought-block p {
+      max-width: 760px;
+    }
+
+    /* ── COST BREAKDOWN ── */
+    .cost-breakdown {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px;
+      margin-top: 28px;
+    }
+    .cost-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .cost-grid { display: flex; flex-direction: column; gap: 0; }
+    .cost-row {
+      display: grid;
+      grid-template-columns: 200px 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cost-row:first-child { border-top: 1px solid var(--border); }
+    .total-row { margin-top: 4px; border-top: 2px solid var(--accent) !important; }
+    .cost-item-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .cost-item-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--heading);
+      line-height: 1;
+    }
+    .cost-item-val.accent { color: var(--accent); }
+    .cost-item-note {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--muted);
+    }
+
     /* ── COMPARISON CARDS ── */
     .comparison-grid {
       display: grid;
@@ -504,9 +568,39 @@
     <div class="proj-section">
       <div class="section-number">// 05 — Final Design</div>
       <h2>Final Design Summary</h2>
-      <p>The selected design is a 6061-T6 Aluminum I-beam with 222 mm flanges, 650 mm web height, and 7 mm uniform wall thickness throughout. This geometry satisfies all structural requirements at the lowest viable cost.</p>
+      <p>The selected design is a 6061-T6 Aluminum I-beam with 222 mm flanges, 650 mm web height, and 7 mm uniform wall thickness throughout. This geometry satisfies all structural requirements at the lowest viable total launch cost.</p>
 
-      <div class="results-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <p>The true objective of this project was not simply minimizing material cost, but minimizing <em>total launch cost</em> — which includes both the cost of the material itself and the cost of getting that mass to orbit. With a launch cost of <strong>$2,700/kg</strong>, every kilogram of structural mass carries a significant premium. The 6061-T6 Aluminum I-beam has a cross-sectional area of approximately 7,658 mm² and a total mass of roughly <strong>206.8 kg</strong> over the 10 m span (using Al density of 2,700 kg/m³), contributing $558,360 in launch mass cost alone.</p>
+
+      <p>This is precisely why the material selection decision carries so much weight in aerospace design. Titanium (Ti-6Al-4V), despite having a higher specific strength, costs $23.25/kg — roughly 8.5× more per kilogram of material. Even though titanium's higher strength-to-weight ratio could yield a lighter beam, the steep material premium far outweighs the mass savings at this scale, making aluminum the decisive choice for total cost minimization.</p>
+
+      <div class="cost-breakdown">
+        <div class="cost-title">Total Launch Cost Breakdown — 6061-T6 Aluminum I-Beam</div>
+        <div class="cost-grid">
+          <div class="cost-row">
+            <div class="cost-item-label">Beam Mass</div>
+            <div class="cost-item-val">~206.8 kg</div>
+            <div class="cost-item-note">Cross-section area 7,658 mm² × 10 m × 2,700 kg/m³</div>
+          </div>
+          <div class="cost-row">
+            <div class="cost-item-label">Material Cost</div>
+            <div class="cost-item-val">$556,518</div>
+            <div class="cost-item-note">From SkyCiv cost optimization at $2.75/kg</div>
+          </div>
+          <div class="cost-row">
+            <div class="cost-item-label">Launch Mass Cost</div>
+            <div class="cost-item-val">$558,360</div>
+            <div class="cost-item-note">206.8 kg × $2,700/kg to orbit</div>
+          </div>
+          <div class="cost-row total-row">
+            <div class="cost-item-label">Total Launch Cost</div>
+            <div class="cost-item-val accent">~$1,114,878</div>
+            <div class="cost-item-note">Material + launch mass penalty</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-grid" style="grid-template-columns: repeat(4, 1fr); margin-top: 24px;">
         <div class="result-card">
           <div class="result-label">Selected Section</div>
           <div class="result-val">I-Beam</div>
@@ -516,12 +610,12 @@
           <div class="result-val">6061-T6 Al</div>
         </div>
         <div class="result-card">
-          <div class="result-label">Total Cost</div>
-          <div class="result-val">$556,518</div>
+          <div class="result-label">Beam Mass</div>
+          <div class="result-val">~207 kg</div>
         </div>
         <div class="result-card">
-          <div class="result-label">Wall Thickness</div>
-          <div class="result-val">7 mm</div>
+          <div class="result-label">Total Launch Cost</div>
+          <div class="result-val">~$1.11M</div>
         </div>
       </div>
 
@@ -562,13 +656,44 @@
       <div class="img-caption">Fig. 7 — Displacement plot: min −13.66 mm (mid-left span), max +6.21 mm (right end). Consistent with SkyCiv analysis.</div>
     </div>
 
-    <!-- ── 07 TAKEAWAYS ── -->
+    <!-- ── 07 THOUGHT PROCESS ── -->
     <div class="proj-section">
-      <div class="section-number">// 07 — Takeaways</div>
+      <div class="section-number">// 07 — Engineering Thought Process</div>
+      <h2>Walking Through the Design Decisions</h2>
+
+      <div class="thought-block">
+        <div class="thought-label">01 — Understanding the Problem</div>
+        <p>The first challenge was learning a new tool, SkyCiv, which turned out to be fairly intuitive, and figuring out how concepts from the course applied to a real design problem. Beyond the mechanics, I was curious about something that isn't immediately obvious: which material would actually produce a lighter beam between aluminum and titanium? Titanium's superior specific strength means less material is needed to carry the same load, so the answer isn't as straightforward as just comparing densities. I was also struck by how dominant launch costs are relative to material costs. At $2,700/kg to orbit, the cost of getting the beam there nearly equals the cost of the beam itself, which fundamentally changes how you think about material selection.</p>
+      </div>
+
+      <div class="thought-block">
+        <div class="thought-label">02 — First Instincts</div>
+        <p>I instinctively ruled out the T-section due to it having fewer structural members than the other two, which turned out to be a fair assumption. I initially thought the C-channel would be the best geometry because of its shape and larger interior cavity compared to the I-beam, useful for housing satellite mechanisms.</p>
+      </div>
+
+      <div class="thought-block">
+        <div class="thought-label">03 — The Torsion Problem with the C-Channel</div>
+        <p>Upon running the numbers, I found the C-channel and I-beam were roughly equivalent in bending strength. However, when you consider the shear center of each section, the I-beam becomes the clear winner. Because the C-channel's shear center lies outside the cross-section and not in line with the applied load, the beam will experience torsion under loading. The I-beam, being doubly symmetric, has its shear center coincident with its centroid and the line of action of the load, so no torsion is induced.</p>
+      </div>
+
+      <div class="thought-block">
+        <div class="thought-label">04 — Material Selection Reasoning</div>
+        <p>For material selection, the decision was fairly straightforward. Aluminum 6061-T6, while less strong than titanium, is considerably cheaper and lighter. Although titanium has superior specific strength, its much higher density means the resulting beam would be comparable in mass or heavier while costing roughly 8.5× more per kilogram in material alone. Since the primary goal of this project is to minimize total launch cost, aluminum is the clear winner. That said, for more demanding applications, material behavior over time should be considered. In a real orbital environment, the satellite experiences extreme temperature swings on every pass, from intense solar exposure to the cold of Earth's shadow, and over thousands of cycles, this thermal cycling induces fatigue in structural members. In that context, titanium's superior resistance to thermal cycling fatigue and its lower coefficient of thermal expansion would make it a more reliable long-term choice, even if it costs more upfront.</p>
+      </div>
+
+      <div class="thought-block">
+        <div class="thought-label">05 — Validating with SolidWorks & Next Steps</div>
+        <p>I chose to run a finite element analysis on the final design because it represents the natural next step in a rigorous engineering process. SkyCiv provides a strong analytical foundation, but SolidWorks Simulation allows for more in-depth validation, including exploring how dynamic loading conditions affect the beam, what the loads actually look like in a real orbital environment, and whether fastener geometry introduces stress concentrations that could compromise the design. Future work would also include optimizing the cross-section geometry to meet an industry-standard factor of safety, and a full fatigue analysis given the cyclic loading environment of an orbiting satellite.</p>
+      </div>
+    </div>
+
+    <!-- ── 08 TAKEAWAYS ── -->
+    <div class="proj-section">
+      <div class="section-number">// 08 — Takeaways</div>
       <h2>Key Takeaways</h2>
       <ul>
-        <li>The I-beam's doubly-symmetric geometry eliminated warping and torsion concerns that made the C-channel a structural risk — at only ~$400 more in cost, it was clearly the right call.</li>
-        <li>Material cost dominates launch economics: titanium was structurally viable but 20–25× more expensive per kg, making aluminum the decisive choice despite lower specific stiffness.</li>
+        <li>The I-beam's doubly-symmetric geometry eliminated warping and torsion concerns that made the C-channel a structural risk at only ~$400 more in cost, making it clearly the right call.</li>
+        <li>Total launch cost, not just material cost, is the true design driver in aerospace. At $2,700/kg to orbit, the 206.8 kg aluminum beam adds $558,360 in launch mass cost on top of $556,518 in material cost, bringing the real total to ~$1.11M. Titanium's higher strength-to-weight ratio could reduce mass, but its 8.5× higher material price more than cancels out any savings at this scale.</li>
         <li>SkyCiv and SolidWorks Simulation produced consistent displacement results, validating the analytical thin-walled beam approach as sufficient for preliminary design at this scale.</li>
         <li>Practiced translating mission-level requirements (minimize launch cost) into quantifiable engineering checks: shear flow, bending stress, deflection, and cross-section geometry.</li>
       </ul>
