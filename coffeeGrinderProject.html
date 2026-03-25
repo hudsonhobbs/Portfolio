@@ -210,6 +210,46 @@
     }
     .proj-section li strong { color: var(--heading); font-weight: 500; }
 
+    /* ── REQUIREMENTS LIST ── */
+    .requirements-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 28px;
+      border: 1px solid var(--border);
+    }
+    .req-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 22px 28px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .req-item:last-child { border-bottom: none; }
+    .req-item:hover { background: var(--surface2); }
+    .req-icon {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--accent3);
+      line-height: 1;
+      min-width: 32px;
+      margin-top: 2px;
+    }
+    .req-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--heading);
+      margin-bottom: 4px;
+    }
+    .req-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
     /* ── THOUGHT BLOCKS ── */
     .thought-block {
       padding: 28px 0;
@@ -421,12 +461,38 @@
       <div class="section-number">// 01 — Problem Statement</div>
       <h2>The Problem</h2>
 
-      <!-- TEMPLATE: Replace the placeholder text below with your own. -->
-      <!-- Describe: what is a manual coffee grinder, why does it need automating, -->
-      <!-- what are the constraints (fit the existing grinder, preserve grind quality, etc.) -->
+      <p>The premise of this course is to take a manual product and design and integrate a system that will automate it, working in a team of four members. My team decided upon automating a manual coffee grinder. The design and customer requirements for the system are as follows.</p>
 
-      <p>[TEMPLATE — replace with your answer]</p>
-      <p>What is the problem you're solving? Why does a manual grinder need a motor? What are the constraints on your design (size, torque requirements, preserving grind quality, fitting the existing hardware)?</p>
+      <div class="requirements-list">
+        <div class="req-item">
+          <div class="req-icon">01</div>
+          <div class="req-text">
+            <div class="req-title">Grind Quality Control</div>
+            <div class="req-desc">Grind coffee beans to a user-desired level of fineness, preserving grind consistency across uses.</div>
+          </div>
+        </div>
+        <div class="req-item">
+          <div class="req-icon">02</div>
+          <div class="req-text">
+            <div class="req-title">Dual Control Modes</div>
+            <div class="req-desc">Allow the user to adjust grind settings both manually and wirelessly, giving full flexibility over how the system is operated.</div>
+          </div>
+        </div>
+        <div class="req-item">
+          <div class="req-icon">03</div>
+          <div class="req-text">
+            <div class="req-title">Scheduled Grinding</div>
+            <div class="req-desc">Schedule grind times through a digital user interface, enabling automated operation without direct user input.</div>
+          </div>
+        </div>
+        <div class="req-item">
+          <div class="req-icon">04</div>
+          <div class="req-text">
+            <div class="req-title">Usage Tracking</div>
+            <div class="req-desc">Store and report overall usage time to support maintenance awareness and long-term reliability.</div>
+          </div>
+        </div>
+      </div>
 
       <div class="thought-block">
         <div class="thought-label">Thought Process — Why This Project?</div>
