@@ -548,6 +548,11 @@
         <p>Most of my group members did not feel strongly about which project to pick from the six choices, so I advocated for the coffee grinder because I enjoy drinking coffee and could see myself as a potential customer for the product. Having a personal stake in the outcome is an advantage in design — customer concerns become directly tied to the design process, which tends to produce more thoughtful and user-centered decisions.</p>
       </div>
 
+      <div style="margin: 8px 0 0;">
+        <img src="coffeeGrinder.png" alt="Manual coffee grinder with grind setting dial" style="width:100%; max-width:480px; display:block; margin: 0 auto; border: 1px solid var(--border); border-radius: 4px;">
+        <div class="img-caption" style="text-align:center; margin-top:10px;">The manual coffee grinder selected for automation — featuring a numbered grind setting dial and hand crank.</div>
+      </div>
+
       <div class="thought-block">
         <div class="thought-label">Thought Process — Design Approach</div>
         <p>We broke the system into two subsystems, each containing two subsections that address a distinct mechanical or software challenge.</p>
@@ -559,12 +564,12 @@
             <div class="subsection-card">
               <div class="subsection-tag">Subsection 1.1</div>
               <div class="subsection-title">Process to Change Grind Setting</div>
-              <p class="subsection-body">[TEMPLATE — describe how the grind setting adjustment mechanism works. What hardware is involved? How does the user interact with it?]</p>
+              <p class="subsection-body">Because we need high torque and a small range of motion, the natural choice for the team was a 0–180 degree servo motor. The follow-on engineering problem then became: how do we transmit the rotation from the servo to the grinder's adjustment dial?</p>
             </div>
             <div class="subsection-card">
               <div class="subsection-tag">Subsection 1.2</div>
               <div class="subsection-title">Process to Turn the Grinder Burr</div>
-              <p class="subsection-body">[TEMPLATE — describe the motor drive system. How does the motor couple to the burr? What were the key engineering decisions around torque, speed, and fit?]</p>
+              <p class="subsection-body">The immediate candidates were a DC motor or a stepper motor. An additional design requirement the team established was stall detection — and the DC motor is the right choice to meet this. By monitoring current draw with a current sensing module, we can detect a stall without the step-skipping problems that would affect a stepper motor under load. As a bonus, since motor speed is controllable, we can track exactly how long the motor and burrs have been running, directly supporting the usage tracking requirement.</p>
             </div>
           </div>
 
@@ -573,7 +578,7 @@
             <div class="subsection-card">
               <div class="subsection-tag">Subsection 2.1</div>
               <div class="subsection-title">Wireless Control of Product / App</div>
-              <p class="subsection-body">[TEMPLATE — describe the wireless communication system. What protocol is used? How does the app interface with the hardware? What were the integration challenges?]</p>
+              <p class="subsection-body">With only four months to develop this project, instead of building a market-ready app, the team prioritized a high-quality prototype — something easily replicated and usable on any user's phone, capable of reliably controlling the grinder within the user's home. We chose a WiFi HTTP approach to demonstrate full functionality. For future development, we recommend transitioning to a proper iOS/Android app using MQTT, which would enable control from anywhere and represent a significantly more finished product.</p>
             </div>
           </div>
 
