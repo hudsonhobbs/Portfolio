@@ -210,6 +210,55 @@
     }
     .proj-section li strong { color: var(--heading); font-weight: 500; }
 
+    /* ── SUBSYSTEM BREAKDOWN ── */
+    .subsystem-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-top: 24px;
+    }
+    .subsystem-group-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent2);
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .subsection-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent3);
+      padding: 22px 24px;
+      margin-bottom: 12px;
+    }
+    .subsection-card:last-child { margin-bottom: 0; }
+    .subsection-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent3);
+      margin-bottom: 6px;
+    }
+    .subsection-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--heading);
+      margin-bottom: 10px;
+    }
+    .subsection-body {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 0 !important;
+      max-width: none !important;
+    }
+
     /* ── REQUIREMENTS LIST ── */
     .requirements-list {
       display: flex;
@@ -496,16 +545,39 @@
 
       <div class="thought-block">
         <div class="thought-label">Thought Process — Why This Project?</div>
-        <!-- TEMPLATE: Why did you choose this? What made it interesting from an engineering standpoint? -->
-        <p>[TEMPLATE — replace with your answer]</p>
-        <p>Why did you choose this as your integration and automation project? What caught your interest about it as an engineering problem?</p>
+        <p>Most of my group members did not feel strongly about which project to pick from the six choices, so I advocated for the coffee grinder because I enjoy drinking coffee and could see myself as a potential customer for the product. Having a personal stake in the outcome is an advantage in design — customer concerns become directly tied to the design process, which tends to produce more thoughtful and user-centered decisions.</p>
       </div>
 
       <div class="thought-block">
         <div class="thought-label">Thought Process — Design Approach</div>
-        <!-- TEMPLATE: How did you break it into subassemblies? What drove that decision? -->
-        <p>[TEMPLATE — replace with your answer]</p>
-        <p>How did you approach breaking this into subassemblies? What were the first engineering questions you needed to answer before touching any hardware?</p>
+        <p>We broke the system into two subsystems, each containing two subsections that address a distinct mechanical or software challenge.</p>
+
+        <div class="subsystem-breakdown">
+
+          <div class="subsystem-group">
+            <div class="subsystem-group-label">Subsystem 1 — Manual Control</div>
+            <div class="subsection-card">
+              <div class="subsection-tag">Subsection 1.1</div>
+              <div class="subsection-title">Process to Change Grind Setting</div>
+              <p class="subsection-body">[TEMPLATE — describe how the grind setting adjustment mechanism works. What hardware is involved? How does the user interact with it?]</p>
+            </div>
+            <div class="subsection-card">
+              <div class="subsection-tag">Subsection 1.2</div>
+              <div class="subsection-title">Process to Turn the Grinder Burr</div>
+              <p class="subsection-body">[TEMPLATE — describe the motor drive system. How does the motor couple to the burr? What were the key engineering decisions around torque, speed, and fit?]</p>
+            </div>
+          </div>
+
+          <div class="subsystem-group">
+            <div class="subsystem-group-label">Subsystem 2 — Wireless Control</div>
+            <div class="subsection-card">
+              <div class="subsection-tag">Subsection 2.1</div>
+              <div class="subsection-title">Wireless Control of Product / App</div>
+              <p class="subsection-body">[TEMPLATE — describe the wireless communication system. What protocol is used? How does the app interface with the hardware? What were the integration challenges?]</p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 
