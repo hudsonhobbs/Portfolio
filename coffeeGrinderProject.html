@@ -314,6 +314,48 @@
       margin-bottom: 14px;
     }
 
+    /* ── FEATURES GRID ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 20px;
+      border: 1px solid var(--border);
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .feature-item:hover { background: var(--surface2); }
+    .feature-item:nth-child(even) { border-right: none; }
+    .feature-item:nth-last-child(-n+2) { border-bottom: none; }
+    .feature-icon {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--accent3);
+      line-height: 1;
+      min-width: 28px;
+      margin-top: 2px;
+    }
+    .feature-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--heading);
+      margin-bottom: 4px;
+    }
+    .feature-desc {
+      font-size: 0.84rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
     /* ── ASSEMBLY BLOCKS ── */
     .assembly-block {
       margin-bottom: 24px;
@@ -494,6 +536,10 @@
       nav { padding: 16px 20px; }
       .project-hero, .content { padding-left: 20px; padding-right: 20px; }
       .todo-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .feature-item { border-right: none; }
+      .feature-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .feature-item:last-child { border-bottom: none; }
     }
   </style>
 </head>
@@ -642,21 +688,63 @@
     <!-- ── 03 SUBASSEMBLY 2 ── -->
     <div class="proj-section">
       <div class="section-number">// 03 — Subassembly 2</div>
-      <h2>Subassembly 2</h2>
+      <h2>Wireless Functionality</h2>
+      <p>This subassembly handles all wireless communication and user interface features, allowing the grinder to be controlled remotely from any phone on the same network.</p>
 
       <div class="subassembly-card">
-        <div class="subassembly-tag">Subassembly 02</div>
-        <h3>[Name — e.g. Control & Interface]</h3>
+        <div class="subassembly-tag">Platform & Hardware</div>
+        <h3>How It's Built</h3>
 
-        <!-- TEMPLATE: Same structure as above — describe, design decisions, challenges. -->
-        <p>[TEMPLATE — replace with your answer]</p>
-        <p>What does this subassembly do? How does it integrate with Subassembly 1? What are the key components and how do they communicate?</p>
-        <p>What problems did you run into and how did you solve them?</p>
-
-        <div class="video-wrap">
-          <iframe width="100%" height="480" src="https://www.youtube.com/embed/l4X4rlxyzj8" title="Wireless Functionality Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="assembly-block">
+          <div class="assembly-label">Controller — ESP32</div>
+          <p>The team selected the ESP32 microcontroller as the wireless hub due to its built-in WiFi capability and seamless integration with the Blynk platform. The ESP32 handles all communication between the Blynk app and the physical actuators from Subassembly 1.</p>
         </div>
-        <div class="img-caption">Video 2 — Wireless functionality demonstration.</div>
+
+        <div class="assembly-block">
+          <div class="assembly-label">App — Blynk</div>
+          <p>Blynk is a drag-and-drop app development tool that allows rapid prototyping of mobile interfaces without writing native iOS or Android code. The team used AI to write the ESP32 firmware using the Blynk library, significantly accelerating development within the four-month project window. The resulting app is easily replicated on any user's phone and reliably controls the grinder over a home WiFi network.</p>
+        </div>
+      </div>
+
+      <div class="subassembly-card">
+        <div class="subassembly-tag">Functionality</div>
+        <h3>Built-In Features</h3>
+
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon">01</div>
+            <div class="feature-text">
+              <div class="feature-title">Start / Stop Grinding</div>
+              <div class="feature-desc">Remotely start and stop the DC motor drive from anywhere on the home network.</div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">02</div>
+            <div class="feature-text">
+              <div class="feature-title">Fineness Selection</div>
+              <div class="feature-desc">Select any grind fineness setting wirelessly, triggering the servo to move to the correct position.</div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">03</div>
+            <div class="feature-text">
+              <div class="feature-title">Usage Time Tracking</div>
+              <div class="feature-desc">Tracks cumulative motor run time and displays it in the app to inform the user when maintenance is due.</div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">04</div>
+            <div class="feature-text">
+              <div class="feature-title">Maintenance Reset</div>
+              <div class="feature-desc">After servicing the grinder, the user can reset the maintenance counter directly from the app.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-wrap" style="margin-top: 28px;">
+          <iframe src="https://www.youtube.com/embed/l4X4rlxyzj8" title="Wireless Functionality Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="img-caption">Video 2 — Wireless functionality demonstration via the Blynk app on ESP32.</div>
       </div>
     </div>
 
