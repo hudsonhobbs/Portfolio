@@ -314,6 +314,13 @@
       margin-bottom: 14px;
     }
 
+    .problems-card {
+      border-top-color: #c0392b;
+    }
+    .problems-card .subassembly-tag {
+      color: #c0392b;
+    }
+
     /* ── FEATURES GRID ── */
     .features-grid {
       display: grid;
@@ -683,6 +690,26 @@
         </div>
         <div class="img-caption">Video 1 — Manual functionality demonstration showing DC motor drive and servo-controlled fineness adjustment.</div>
       </div>
+
+      <div class="subassembly-card problems-card">
+        <div class="subassembly-tag">Known Problems</div>
+        <h3>What Needs Improvement</h3>
+
+        <div class="assembly-block">
+          <div class="assembly-label">Fan Belt Durability</div>
+          <p>The fan belt solution is not permanent. Under extended use, the belt slips from the tape and stops functioning as intended. A more robust mechanical connection — such as a printed belt with integrated teeth or a gear-driven alternative — would be needed for a production version.</p>
+        </div>
+
+        <div class="assembly-block">
+          <div class="assembly-label">Servo Coupling Strength</div>
+          <p>The 3D-printed piece connecting the servo to the fan belt does not have sufficient strength for long-term use. It failed after the demo video was recorded. This part would need to be redesigned with a stronger geometry, printed in a more durable material, or replaced with a machined component.</p>
+        </div>
+
+        <div class="assembly-block">
+          <div class="assembly-label">Frame Bowing</div>
+          <p>When the fan belt is attached and under tension, it causes the back of the frame to bow inwards considerably. While this does not prevent the system from functioning, it is not acceptable for a consumer product and points to a need for a stiffer frame design or a revised belt tensioning approach.</p>
+        </div>
+      </div>
     </div>
 
     <!-- ── 03 SUBASSEMBLY 2 ── -->
@@ -746,6 +773,21 @@
         </div>
         <div class="img-caption">Video 2 — Wireless functionality demonstration via the Blynk app on ESP32.</div>
       </div>
+
+      <div class="subassembly-card problems-card">
+        <div class="subassembly-tag">Known Problems</div>
+        <h3>What Needs Improvement</h3>
+
+        <div class="assembly-block">
+          <div class="assembly-label">App Reliability</div>
+          <p>The app did not always behave consistently, particularly when reconnecting to a network after a dropout. This is a known limitation of the WiFi HTTP approach and would likely be resolved by transitioning to MQTT, which handles reconnection and message delivery more robustly.</p>
+        </div>
+
+        <div class="assembly-block">
+          <div class="assembly-label">App Distribution</div>
+          <p>Currently there is no clear path to making the app available to end users outside of the development environment. Packaging and distributing a Blynk-based app to consumers is a challenge that would need to be solved before this could reach a wider audience. The recommended long-term solution is to develop a proper iOS/Android app using MQTT, which would be distributable through standard app stores.</p>
+        </div>
+      </div>
     </div>
 
     <!-- ── 04 WHAT'S LEFT ── -->
@@ -753,42 +795,53 @@
       <div class="section-number">// 04 — What's Left</div>
       <h2>Remaining Work</h2>
 
-      <!-- TEMPLATE: Describe what still needs to be done and HOW you plan to do it. -->
-      <!-- Be specific — not just "finish the wiring" but what the actual engineering challenge is. -->
-      <p>[TEMPLATE — replace with your answer]</p>
-      <p>What is left to complete the full integrated system? What are the remaining engineering challenges and how do you plan to tackle them?</p>
+      <p>Both subassemblies demonstrated proof-of-concept functionality, but several mechanical and software issues would need to be addressed before this could be considered a finished product. The remaining work falls into two categories: redesigning the weakest mechanical components of Subassembly 1, and improving the reliability and accessibility of the wireless control system.</p>
 
       <div class="todo-grid">
         <div class="todo-card">
           <h4>Completed</h4>
-          <!-- Mark done items with class="todo-dot done" -->
           <div class="todo-item">
             <div class="todo-dot done"></div>
-            <span>[TEMPLATE — completed task 1]</span>
+            <span>DC motor drive and shaft coupling assembly</span>
           </div>
           <div class="todo-item">
             <div class="todo-dot done"></div>
-            <span>[TEMPLATE — completed task 2]</span>
+            <span>Servo-controlled grind setting adjustment via fan belt</span>
           </div>
           <div class="todo-item">
             <div class="todo-dot done"></div>
-            <span>[TEMPLATE — completed task 3]</span>
+            <span>ESP32 + Blynk wireless control prototype</span>
+          </div>
+          <div class="todo-item">
+            <div class="todo-dot done"></div>
+            <span>Start/stop, fineness selection, usage tracking, and maintenance reset in app</span>
+          </div>
+          <div class="todo-item">
+            <div class="todo-dot done"></div>
+            <span>Live demonstration of both subassemblies</span>
           </div>
         </div>
         <div class="todo-card">
           <h4>Still To Do</h4>
-          <!-- Open dots = not yet done -->
           <div class="todo-item">
             <div class="todo-dot"></div>
-            <span>[TEMPLATE — remaining task 1]</span>
+            <span>Redesign fan belt mechanism for a permanent, durable solution</span>
           </div>
           <div class="todo-item">
             <div class="todo-dot"></div>
-            <span>[TEMPLATE — remaining task 2]</span>
+            <span>Redesign or replace servo coupling in a stronger material</span>
           </div>
           <div class="todo-item">
             <div class="todo-dot"></div>
-            <span>[TEMPLATE — remaining task 3]</span>
+            <span>Stiffen frame to eliminate bowing under belt tension</span>
+          </div>
+          <div class="todo-item">
+            <div class="todo-dot"></div>
+            <span>Improve network reconnection reliability</span>
+          </div>
+          <div class="todo-item">
+            <div class="todo-dot"></div>
+            <span>Develop distributable iOS/Android app using MQTT</span>
           </div>
         </div>
       </div>
