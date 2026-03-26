@@ -314,6 +314,26 @@
       margin-bottom: 14px;
     }
 
+    /* ── ASSEMBLY BLOCKS ── */
+    .assembly-block {
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .assembly-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .assembly-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
     /* ── SUBASSEMBLY CARDS ── */
     .subassembly-card {
       background: var(--surface);
@@ -589,22 +609,33 @@
     <!-- ── 02 SUBASSEMBLY 1 ── -->
     <div class="proj-section">
       <div class="section-number">// 02 — Subassembly 1</div>
-      <h2>Subassembly 1</h2>
+      <h2>Manual Functionality</h2>
+      <p>This subassembly covers all the physical functions of the device: the DC motor drive, grind time control, fineness setting switching, and noise output. It is the mechanical backbone of the system.</p>
 
       <div class="subassembly-card">
-        <div class="subassembly-tag">Subassembly 01</div>
-        <h3>[Name — e.g. Motor Drive & Coupling]</h3>
+        <div class="subassembly-tag">Construction & Assembly</div>
+        <h3>How It's Built</h3>
 
-        <!-- TEMPLATE: Describe what this subassembly does, how you designed it, -->
-        <!-- what challenges you ran into, and how you solved them. -->
-        <p>[TEMPLATE — replace with your answer]</p>
-        <p>What does this subassembly do? How did you design it? What were the key engineering decisions (motor selection, torque, coupling geometry, mounting)?</p>
-        <p>What problems did you run into and how did you solve them?</p>
+        <div class="assembly-block">
+          <div class="assembly-label">Bottom Frame</div>
+          <p>A gray 3D-printed frame with an integrated gasket holds the grinder body by friction fit, preventing the bottom half from rotating during operation. Screw holes on the back of the frame secure a bracketed servo motor in place. A 3D-printed fan belt attachment fits onto the servo motor coupling, and a rubber belt — glued and taped to a circular screw clamp — connects the two. Holes cut into the belt mesh with teeth on the fan belt attachment, allowing the servo to step the grind setting up or down through each fineness position.</p>
+        </div>
+
+        <div class="assembly-block">
+          <div class="assembly-label">Top Frame</div>
+          <p>The top frame is a separate 3D-printed part that friction fits over the top of the coffee grinder. It features holes that align with the motor's screw holes, allowing it to be bolted securely in place. A custom 3D-printed shaft coupling is pressed onto the motor shaft. To install, push the top frame down until resistance is felt, then twist and lightly press down to slot the grinder's shaft into the coupling.</p>
+        </div>
+      </div>
+
+      <div class="subassembly-card">
+        <div class="subassembly-tag">Functionality</div>
+        <h3>How It Works</h3>
+        <p>Once assembled, the system handles two independent physical functions. The DC motor drives the grinder burr through the shaft coupling, controlling grind time and duration. The servo motor, connected via the belt and fan belt attachment, rotates the grind setting collar up or down to the desired fineness level. Together these two actuators replicate the full manual operation of the grinder without any user input.</p>
 
         <div class="video-wrap">
-          <iframe width="100%" height="480" src="https://www.youtube.com/embed/vdcGWUQDunI" title="Manual Functionality Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/vdcGWUQDunI" title="Manual Functionality Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div class="img-caption">Video 1 — Manual functionality demonstration.</div>
+        <div class="img-caption">Video 1 — Manual functionality demonstration showing DC motor drive and servo-controlled fineness adjustment.</div>
       </div>
     </div>
 
